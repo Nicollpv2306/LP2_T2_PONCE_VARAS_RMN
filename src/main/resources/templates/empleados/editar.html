@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Empleado</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Editar Empleado</h2>
+    <form th:action="@{/editar_empleado/{id}(id=${empleado.dniEmpleado})}" th:object="${empleado}" method="post">
+        <div class="form-group">
+            <label for="dniEmpleado">DNI</label>
+            <input type="text" class="form-control" id="dniEmpleado" th:field="*{dniEmpleado}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="nomEmpleado">Nombre</label>
+            <input type="text" class="form-control" id="nomEmpleado" th:field="*{nomEmpleado}" required>
+        </div>
+        <div class="form-group">
+            <label for="apeEmpleado">Apellido</label>
+            <input type="text" class="form-control" id="apeEmpleado" th:field="*{apeEmpleado}" required>
+        </div>
+        <div class="form-group">
+            <label for="fecNacimiento">Fecha de Nacimiento</label>
+            <input type="date" class="form-control" id="fecNacimiento" th:field="*{fecNacimiento}" required>
+        </div>
+        <div class="form-group">
+            <label for="dirEmpleado">Dirección</label>
+            <input type="text" class="form-control" id="dirEmpleado" th:field="*{dirEmpleado}" required>
+        </div>
+        <div class="form-group">
+            <label for="corEmpleado">Correo</label>
+            <input type="email" class="form-control" id="corEmpleado" th:field="*{corEmpleado}" required>
+        </div>
+        <div class="form-group">
+            <label for="area">Área</label>
+            <select class="form-control" id="area" th:field="*{area.areaId}" required>
+                <option th:each="a : ${areas}" th:value="${a.areaId}" th:text="${a.areaNom}" th:selected="${a.areaId == empleado.area.areaId}"></option>
+            </select>
+        </div>
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary btn-action">Actualizar</button>
+            <a th:href="@{/listar_empleados}" class="btn btn-secondary btn-action ml-2">Cancelar</a>
+        </div>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
