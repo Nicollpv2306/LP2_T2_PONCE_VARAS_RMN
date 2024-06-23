@@ -24,10 +24,28 @@ public class AreaEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "area_id")
 	private Integer areaId;
-	
+
 	@Column(name = "nombre_area",
 			columnDefinition = "VARCHAR(45)",
 			nullable = false)
 	private String areaNom;
+
+	public Integer getAreaId() {
+		return areaId;
+	}
+
+	public void setAreaId(Integer areaId) {
+		this.areaId = areaId;
+	}
+
+	public String getAreaNom() {
+		return areaNom;
+	}
+
+	public void setAreaNom(String areaNom) {
+		this.areaNom = areaNom;
+	}
+	
+	
 
 }

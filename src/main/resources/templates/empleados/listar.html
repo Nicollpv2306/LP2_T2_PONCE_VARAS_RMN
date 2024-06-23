@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD con Thymeleaf y Bootstrap</title>
+    <!-- Estilos de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="container mt-4">
+                <h2 class="titulo-centrado">LISTADO DE EMPLEADOS</h2>
+            </div>
+            <div class="container mt-4">
+                <a th:href="@{/registrar_empleados}" class="btn btn-primary btn-full-width mb-4">Registrar Nuevo Empleado</a>
+            </div>
+            <div class="table-responsive table-custom">
+                <table class="table table-success table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">DNI</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Fecha de Nacimiento</th>
+                            <th scope="col">Dirección</th>
+                            <th scope="col">Correo</th>
+                            <th scope="col">Área</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="empleado : ${empleado}">
+                            <td th:text="${empleado.dniEmpleado}"></td>
+                            <td th:text="${empleado.nomEmpleado}"></td>
+                            <td th:text="${empleado.apeEmpleado}"></td>
+                            <td th:text="${#dates.format(empleado.fecNacimiento, 'yyyy-MM-dd')}"></td>
+                            <td th:text="${empleado.dirEmpleado}"></td>
+                            <td th:text="${empleado.corEmpleado}"></td>
+                            <td th:text="${empleado.area.areaNom}"></td>
+                            <td>
+                                <div class="btn-group btn-actions" role="group">
+                                    <a th:href="@{/editar_empleado/{id}(id=${empleado.dniEmpleado})}" class="btn btn-warning btn-sm">Editar</a>|
+                                    <a th:href="@{/detalle_empleado/{id}(id=${empleado.dniEmpleado})}" class="btn btn-success btn-sm">Ver</a>|
+                                    <a th:href="@{/eliminar_empleados/{id}(id=${empleado.dniEmpleado})}" class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar Empleado?');">Eliminar</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Scripts de Bootstrap y jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

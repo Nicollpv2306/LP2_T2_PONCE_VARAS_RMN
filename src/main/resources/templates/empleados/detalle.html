@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD con Thymeleaf y Bootstrap</title>
+    <!-- Estilos de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Detalles del Empleado</h2>
+        <div class="card">
+            <div class="card-body">
+                <form th:action="@{/editar_empleado/{id}(id=${empleado.dniEmpleado})}" th:object="${empleado}" method="post">
+            <div class="form-group">
+                <label for="dniEmpleado">DNI</label>
+                <input type="text" class="form-control" id="dniEmpleado" th:value="${empleado.dniEmpleado}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="nomEmpleado">Nombre</label>
+                <input type="text" class="form-control" id="nomEmpleado" th:value="${empleado.nomEmpleado}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="apeEmpleado">Apellido</label>
+                <input type="text" class="form-control" id="apeEmpleado" th:value="${empleado.apeEmpleado}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="fecNacimiento">Fecha de Nacimiento</label>
+                <input type="text" class="form-control" id="fecNacimiento" th:value="${#dates.format(empleado.fecNacimiento, 'yyyy-MM-dd')}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="dirEmpleado">Dirección</label>
+                <input type="text" class="form-control" id="dirEmpleado" th:value="${empleado.dirEmpleado}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="corEmpleado">Correo</label>
+                <input type="email" class="form-control" id="corEmpleado" th:value="${empleado.corEmpleado}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="area">Área</label>
+                <input type="text" class="form-control" id="area" th:value="${empleado.area.areaNom}" readonly>
+            </div>
+            <div class="form-group text-center">
+                <a th:href="@{/listar_empleados}" class="btn btn-primary btn-action">Volver</a>
+            </div>
+        </form>
+            </div>
+        </div>
+    </div>
+    
+    
+
+    <!-- Scripts de Bootstrap y jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+</body>
+</html>
