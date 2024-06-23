@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>t2</artifactId>
+	<artifactId>LP2_T2_PONCE_VARAS_RMN</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>t2</name>
+	<name>LP2_T2_PONCE_VARAS_RMN</name>
 	<description>Examen T2 de LP2</description>
 	<url/>
 	<licenses>
